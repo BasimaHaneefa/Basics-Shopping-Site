@@ -1,0 +1,20 @@
+{% for i in data %}
+<table border="1">
+    <tr>
+        <td colspan="2" align="center">
+            <img src="{{i.ownerregistration_photo.url}}" width="150" height="150">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            {{i.ownerregistration_name}}<br>
+            {{i.ownerrregistration_email}}<br>
+            {{i.ownerregistration_about}}<br>
+            {{i.ownerregistration_contact}}<br>
+            {{i.ownerregistration_address}}<br>
+            {{i.ownerregistration_place.district.district_name}}<br>
+            {{i.ownerregistration_place.place_name}}<br>
+        </td>
+    </tr>
+</table>
+{% endfor %}

@@ -1,0 +1,75 @@
+{% extends 'Warehouseapp/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Add Delivery Boy</h1>
+    <br>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    <table border="1" align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="txtname"></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="txtemail"></td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td><input type="text" name="contact"></td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td><input type="text" name="txtaddress"></td>
+        </tr>
+        <tr>
+            <td>Photo</td>
+            <td><input type="file" name="photo"></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="txtpassword"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="Save" value="Save">
+                <input type="reset"  name="Cancel"  value="Cancel">
+            </td>
+         </tr>
+        </table>
+    </form>
+    <br><br>
+    <table border="1" align="center">
+        <tr>
+            <td>Sl.no</td>
+            <td>Photo</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>Address</td>
+            <td>Action</td>
+        </tr>
+        {% for i in deliveryboy %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><img src="{{i.deliveryboy_photo.url}}" width="150" height="150"></td>
+            <td>{{i.deliveryboy_name}}</td>
+            <td>{{i.deliveryboy_email}}</td>
+            <td>{{i.deliveryboy_contact}}</td>
+            <td>{{i.deliveryboy_address}}</td>
+            <td><a href="{% url 'webwarehouse:DelDeliveryboy' i.id %}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+<br><br><br><br>
+{% endblock content %}

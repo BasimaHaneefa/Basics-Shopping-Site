@@ -1,0 +1,118 @@
+<html>
+<body>
+
+<form>
+
+{% csrf_token %}
+<table border="1">
+
+<tr>
+ <td>FirstName</td>
+ <td><input type="text" name="txtfname"></td>
+</tr>
+
+<tr>
+ <td>LastName</td>
+ <td><input type="text" name="txtlname"></td>
+</tr>
+
+
+<tr>
+ <td>Gender</td>
+ <td>
+      <input type="radio" name="gender" value="Male">Male
+      <input type="radio" name="gender" value="Female">Female
+  </td>
+</tr>
+
+
+<tr>
+ <td>Martial</td>
+ <td>
+      <input type="radio" name="martial" value="rdbSingle">Single
+      <input type="radio" name="martial" value="rdbMarried">Married
+  </td>
+</tr>
+
+
+<tr>
+ <td>Dept</td>
+ <td>
+     <select name="ddlDept">
+       <option value="sel">--select--</option>
+       <option value="Data Analyst">Data Analyst</option>
+       <option value="Tester">Tester</option>
+       <option value="Developer">Developer</option>
+       <option value="Graphic Designer">Graphic Designer</option>
+       <option value="Hacker">Hacker</option>
+     </select>	      
+  </td>
+</tr>
+
+
+
+
+<tr>
+ <td>Basic Salary</td>
+ <td><input type="text" name="basicsalary"></td>
+</tr>
+
+
+<tr>
+ <td colspan="2" align="center">
+    <input type="submit" name="submit" value="Submit">
+    <input type="reset"  name="Cancel"  value="Cancel">
+ </td>
+</tr>
+
+
+
+</table>
+
+</form>
+<form>
+    <table border="1">
+     <tr>
+         <td>Name</td>
+         <td>{{Name}}</td>
+     </tr>
+     <tr>
+        <td>Gender</td>
+        <td>{{Gender}}</td>
+    </tr>
+    <tr>
+        <td>Martial</td>
+        <td>{{Martial}}</td>
+    </tr>
+    <tr>
+        <td>Dept</td>
+        <td>{{Dept}}</td>
+    </tr>
+    <tr>
+        <td>TA</td>
+        <td>{{TA}}</td>
+    </tr>
+
+    <tr>
+        <td>DA</td>
+        <td>{{DA}}</td>
+    </tr>
+    <tr>
+        <td>HRA</td>
+        <td>{{HRA}}</td>
+    </tr>
+    <tr>
+        <td>LIC</td>
+        <td>{{LIC}}</td>
+    </tr>
+    <tr>
+        <td>PF</td>
+        <td>{{PF}}</td>
+    </tr>
+    
+    <tr>
+        <td>NET</td>
+        <td>{{NET}}</td>
+    </tr>
+</body>
+</html>

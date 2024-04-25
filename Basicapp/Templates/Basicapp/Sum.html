@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Document</title>
+    </head>
+    <boby>
+        <form method="post">
+            {% csrf_token %}
+            <table border="1">
+                <tr>
+                    <td>Num</td>
+                    <td><input type="text" name="txtname"></td>
+                </tr>
+                <tr>
+                    <td>Num1</td>
+                    <td><input type="text" name="txtname1"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" name="btn" value="save">
+                    <input type="reset" name="can" value="cancel"></td>
+                </tr>
+            </table>
+
+        </form>
+        sum={{result}}
+    </boby>
+</html>

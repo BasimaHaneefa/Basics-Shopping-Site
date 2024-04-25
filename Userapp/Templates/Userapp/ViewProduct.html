@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" align="center">
+        <tr>
+            <td>Type</td>
+            <td><select name="seltype" id="seltype" onchange="Search()">
+                <option value="">Select</option>
+                {% for i in type %}
+                <option value="{{i.id}}">{{i.producttype_name}}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Subtype</td>
+            <td><select name="selsubtype" id="selsubtype" onchange="Search()">
+                <option value="">Select</option>
+            </select></td>
+        </tr>
+    </table>
+    <div id="result">
+    {% for i in data %}
+    <table border="1">
+        <tr>
+            <td colspan="2" align="center">
+                <img src="{{i.product_image.url}}" width="150" height="150">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{i.product_name}}<br>
+                {{i.product_details}}<br>
+               Rs.{{i.product_price}}/-<br>
+                {{i.subtype.producttype.producttype_name}}<br>
+                {{i.subtype.subtype_name}}<br>
+                <a href="{% url 'webuser:addcart' i.id %}">Add to cart</a>
+
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#seltype").change(function () {
+        var did = $(this).val();
+        var ur = "{% url 'webBusinessowner:ajaxsubtype' %}";
+        $.ajax({
+            url: ur,
+            data: { proid: did, },
+            success: function (data) {
+                $("#selsubtype").html(data);
+            },
+        });
+    });
+    function Search(){
+        var did=document.getElementById("seltype").value
+        var pid=document.getElementById("selsubtype").value
+        var ur="{% url 'webuser:AjaxProduct' %}";
+        $.ajax({
+            url: ur,
+            data: { did:did,pid:pid },
+            success: function (data) {
+                $("#result").html(data);
+            },
+        });
+    }
+</script>

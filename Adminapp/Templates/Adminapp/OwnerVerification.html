@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>New Business Owner</h1>
+    <table border="1">
+        <tr>
+            <td>Sl.no</td>
+            <td>Name</td>
+            <td>About</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>Address</td>
+            <td>Photo</td>
+            <td>Proof</td>
+            <td>District</td>
+            <td>Place</td>
+            <td>Action</td>
+        </tr>
+        {% for i in new %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.ownerregistration_name}}</td>
+            <td>{{i.ownerregistration_about}}</td>
+            <td>{{i.ownerrregistration_email}}</td>
+            <td>{{i.ownerregistration_contact}}</td>
+            <td>{{i.ownerregistration_address}}</td>
+            <td><img src="{{i.ownerregistration_photo.url}}" width="150" height="150"></td>
+            <td><a href="{{i.ownerregistration_proof.url}}" download>View</a></td>
+            <td>{{i.ownerregistration_place.district.district_name}}</td>
+            <td>{{i.ownerregistration_place.place_name}}</td>
+            <td><a href="{%  url 'webadmin:Acceptowner' i.id %}">Accept</a><a href="{%  url 'webadmin:Rejectowner' i.id %}">Reject</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h1>Accepted Business Owner</h1>
+    <table border="1">
+        <tr>
+            <td>Sl.no</td>
+            <td>Name</td>
+            <td>About</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>Address</td>
+            <td>Photo</td>
+            <td>Proof</td>
+            <td>District</td>
+            <td>Place</td>
+            <td>Action</td>
+        </tr>
+        {% for i in accepted %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.ownerregistration_name}}</td>
+            <td>{{i.ownerregistration_about}}</td>
+            <td>{{i.ownerrregistration_email}}</td>
+            <td>{{i.ownerregistration_contact}}</td>
+            <td>{{i.ownerregistration_address}}</td>
+            <td><img src="{{i.ownerregistration_photo.url}}" width="150" height="150"></td>
+            <td><a href="{{i.ownerregistration_proof.url}}" download>View</a></td>
+            <td>{{i.ownerregistration_place.district.district_name}}</td>
+            <td>{{i.ownerregistration_place.place_name}}</td>
+            <td><a href="{%  url 'webadmin:Rejectowner' i.id %}">Reject</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+    <h1>Rejected Business Owner</h1>
+    <table border="1">
+        <tr>
+            <td>Sl.no</td>
+            <td>Name</td>
+            <td>About</td>
+            <td>Email</td>
+            <td>Contact</td>
+            <td>Address</td>
+            <td>Photo</td>
+            <td>Proof</td>
+            <td>District</td>
+            <td>Place</td>
+            <td>Action</td>
+        </tr>
+        {% for i in rejected %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.ownerregistration_name}}</td>
+            <td>{{i.ownerregistration_about}}</td>
+            <td>{{i.ownerrregistration_email}}</td>
+            <td>{{i.ownerregistration_contact}}</td>
+            <td>{{i.ownerregistration_address}}</td>
+            <td><img src="{{i.ownerregistration_photo.url}}" width="150" height="150"></td>
+            <td><a href="{{i.ownerregistration_proof.url}}" download>View</a></td>
+            <td>{{i.ownerregistration_place.district.district_name}}</td>
+            <td>{{i.ownerregistration_place.place_name}}</td>
+            <td><a href="{%  url 'webadmin:Acceptowner' i.id %}">Accept</a></td>
+
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

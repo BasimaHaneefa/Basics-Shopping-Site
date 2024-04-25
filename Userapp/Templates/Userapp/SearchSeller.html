@@ -1,0 +1,88 @@
+{% extends 'Userapp/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% if msg %}
+    <script>
+        alert('{{msg}}')
+        window.location="{% url 'webuser:SearchSeller' %}"
+    </script>
+    {% endif %}
+    <table border="1" align="center">
+        <tr>
+            <td>District</td>
+            <td><select name="txtdis" id="txtdis" onchange="Search()">
+                <option value="">Select</option>
+                {% for i in dis %}
+                <option value="{{i.id}}">{{i.district_name}}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td>Place</td>
+            <td><select name="place" id="place" onchange="Search()">
+                <option value="">Select</option>
+            </select></td>
+        </tr>
+    </table>
+    <div id="Result">
+    {% for i in data %}
+    <table border="1">
+        <tr>
+            <td colspan="2" align="center">
+                <img src="{{i.ownerregistration_photo.url}}" width="150" height="150">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{i.ownerregistration_name}}<br>
+                {{i.ownerrregistration_email}}<br>
+                {{i.ownerregistration_about}}<br>
+                {{i.ownerregistration_contact}}<br>
+                {{i.ownerregistration_address}}<br>
+                {{i.ownerregistration_place.district.district_name}}<br>
+                {{i.ownerregistration_place.place_name}}<br>
+                <a href="{% url 'webuser:ViewProduct' i.id %}">Product</a>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}
+</div>
+</body>
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $("#txtdis").change(function () {
+        var did = $(this).val();
+        var ur = "{% url 'webguest:AjaxPlace' %}";
+        $.ajax({
+            url: ur,
+            data: { disid: did, },
+            success: function (data) {
+                $("#place").html(data);
+            },
+        });
+    });
+    function Search()
+    {
+        var district=document.getElementById("txtdis").value
+        var place=document.getElementById("place").value
+        var ur = "{% url 'webuser:AjaxSeller' %}";
+        $.ajax({
+            url: ur,
+            data: { dis: district,plac:place },
+            success: function (data) {
+                $("#Result").html(data);
+            },
+        });
+    }
+</script>
+<br><br><br><br>
+{% endblock content %}

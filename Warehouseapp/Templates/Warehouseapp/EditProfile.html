@@ -1,0 +1,48 @@
+{% extends 'Warehouseapp/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">Edit Profile</h1>
+    <form method="post">
+     {% csrf_token %} 
+    <table border="1" align="center">
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="txtname" value="{{data.warehousereg_name}}"> </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="email" name="txtemail" value="{{data.warehousereg_email}}"></td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td><select name="District" id="selDistrict">
+                <option value="">Select</option>
+                {% for i in dis %}
+               <option value="{{i.id}}"{% if i.id == data.warehousereg_district.id %} Selected {% endif %}>{{i.district_name}}</option>
+                {% endfor %}
+                </select></td>
+         </tr>        
+        <tr>
+            <td>Address</td>
+            <td><textarea name="txtaddress" >{{data.warehousereg_address}}</textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" name="Submit" value="Save">
+                 <input type="reset"  name="Cancel"  value="Cancel">
+                </td>
+            </tr>
+    </table>
+    </from>
+</body>
+</html>
+<br><br><br><br>
+{% endblock content %}

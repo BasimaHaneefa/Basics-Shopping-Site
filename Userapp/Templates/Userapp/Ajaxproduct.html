@@ -1,0 +1,19 @@
+{% for i in data %}
+    <table border="1">
+        <tr>
+            <td colspan="2" align="center">
+                <img src="{{i.product_image.url}}" width="150" height="150">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{i.product_name}}<br>
+                {{i.product_details}}<br>
+               Rs.{{i.product_price}}/-<br>
+                {{i.subtype.producttype.producttype_name}}<br>
+                {{i.subtype.subtype_name}}<br>
+                <a href="{% url 'webuser:addcart' i.id %}">Add to cart</a>
+            </td>
+        </tr>
+    </table>
+    {% endfor %}

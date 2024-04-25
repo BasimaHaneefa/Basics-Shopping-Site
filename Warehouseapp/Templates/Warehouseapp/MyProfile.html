@@ -1,0 +1,40 @@
+{% extends 'Warehouseapp/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 align="center">My Profile</h1>
+    <br>
+    <from method="post" >
+     {% csrf_token %} 
+     <table border="1" align="center">
+     
+        <tr>
+            <td>user name</td>
+            <td>{{data.warehousereg_name}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{data.warehousereg_email}}</td>
+        </tr>
+        
+        <tr>
+            <td>Address</td>
+            <td>{{data.warehousereg_address}}</td>
+        </tr>
+        <tr>
+            <td>District</td>
+            <td>{{data.warehousereg_district.district_name}}</td>
+        </tr>
+        </table>
+    </from>
+</body>
+</html>
+<br><br><br><br>
+{% endblock content %}

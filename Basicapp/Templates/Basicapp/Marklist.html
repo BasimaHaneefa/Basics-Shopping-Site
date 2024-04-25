@@ -1,0 +1,99 @@
+<html>
+   
+    <body>
+        <form action="" method="post">
+            {% csrf_token %}
+            <table border="1">
+
+                <tr>
+                 <td>Name</td>
+                 <td><input type="text" name="txt_name"></td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td><input type="text" name="txt_contact"></td>
+                   </tr>
+
+                   <tr>
+                    <td>Email</td>
+                    <td><input type="email" name="email"></td>
+                   </tr>
+                
+               
+                
+                
+                
+                <tr>
+                 <td>Department</td>
+                 <td>
+                     <select name="txt_dept">
+                       <option value="sel">--select--</option>
+                       <option value="bca">BCA</option>
+                       <option value="bba">BBA</option>
+                       <option value="bcom">Bcom</option>
+
+                     </select>	      
+                  </td>
+                </tr>
+                <tr>
+                    <td>Mark 1</td>
+                    <td><input type="text" name="txt_mark1"></td>
+                   </tr>
+                   
+                   
+                  <tr>
+                    <td>Mark 2</td> 
+                   <td><input type="text" name="txt_mark2"></td>
+                    </tr>
+                    <tr>
+                        <td>Mark 3</td> 
+                       <td><input type="text" name="txt_mark3"></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" align="center">
+                               <input type="submit" name="btnsubmit" value="Submit">
+                            </table>
+                        </form>
+
+                        <form>
+                               <table border="1">
+                                <tr>
+                                    <td>Name</td>
+                                    <td>{{Name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact</td>
+                                    <td>{{Contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td>{{Email}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Department</td>
+                                    <td>{{Department}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Total</td>
+                                    <td>{{Total}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Percentage</td>
+                                    <td>{{Percent}}</td>
+                                </tr>
+                                 <tr>
+                                    <td>Grade</td>
+                                    <td>{{Grade}}</td>
+                                </tr>
+
+                               </table>
+                               
+                            </td>
+                           </tr>
+         </form>
+         
+         
+         
+
+    </body>
+</html>
